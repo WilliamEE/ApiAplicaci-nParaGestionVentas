@@ -1,0 +1,1 @@
+scaffold-dbcontext "Host=Localhost;Port=5432;Database=GestionVentasBD;Username=Administrador;Password=LaConfianza" "Segun dependencia".EntityFrameworkCore.PostgreSql
