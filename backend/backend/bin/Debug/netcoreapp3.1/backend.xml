@@ -6,27 +6,78 @@
     <members>
         <member name="M:backend.Controllers.CategoriasController.GetCategoriaPaginado(System.Int32,System.Int32)">
             <summary>
-            GET para obtener productos paginadas
+            Permite obtener categorias paginadas
             Enviar parámetros para paginar, sin parámetros para obtener el listado completo
             </summary>
-            <param name="page">No obligatorio, cantidad de elementos a saltar</param>
-            <param name="quantity">No obligatorio, cantidad de elementos a mostrar</param>
+            <param name="page">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+            <param name="quantity">No obligatorio, cantidad de elementos a mostrar, tipo entero</param>
             <returns></returns>
         </member>
-        <member name="M:backend.Controllers.ProductosController.PutProducto(System.Int32,backend.Producto)">
+        <member name="M:backend.Controllers.CategoriasController.GetCategoria(System.Int32)">
             <summary>
-            Actualización de productos.
+            Permite obtener una categoría encontrado por identificador de tipo integer
             </summary>
-            <param name="id">Requerido</param>
-            <param name="producto"></param>
+            <param name="id">Obligatorio, identificador para encontrar una categoría, tipo entero</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriasController.PutCategoria(System.Int32,backend.Categoria)">
+            <summary>
+            Permite actualizar una categoria por medio de su identificador
+            </summary>
+            <param name="id">Obligatorio, identificador de la categoría a modificar, tipo entero</param>
+            <param name="categoria">Datos en formato Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriasController.PostCategoria(backend.Categoria)">
+            <summary>
+            Permite la inserción de una nueva categoría.
+            </summary>
+            <param name="categoria">Datos en formato Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.CategoriasController.DeleteCategoria(System.Int32)">
+            <summary>
+            Permite la eliminación de una categoría mediante su identificador
+            </summary>
+            <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
             <returns></returns>
         </member>
         <member name="M:backend.Controllers.ProductosController.GetProductoPaginado(System.Int32,System.Int32)">
             <summary>
-            
+            Permite obtener productos paginados
+            Enviar parámetros para paginar, sin parámetros para obtener el listado completo
             </summary>
-            <param name="page"></param>
-            <param name="quantity"></param>
+            <param name="page">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+            <param name="quantity">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ProductosController.GetProducto(System.Int32)">
+            <summary>
+            Permite obtener un producto encontrado por identificador de tipo integer
+            </summary>
+            <param name="id">Obligatorio, identificador para encontrar un producto, tipo entero</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ProductosController.PutProducto(System.Int32,backend.Producto)">
+            <summary>
+            Permite actualizar un producto por medio de su identificador
+            </summary>
+            <param name="id">Obligatorio, identificador de la categoría a modificar, tipo entero</param>
+            <param name="producto">Datos en formato Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ProductosController.PostProducto(backend.Producto)">
+            <summary>
+            Permite la inserción de un nuevo producto.
+            </summary>
+            <param name="producto">Datos en formato Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ProductosController.DeleteProducto(System.Int32)">
+            <summary>
+            Permite la eliminación de una categoría mediante su identificador
+            </summary>
+            <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
             <returns></returns>
         </member>
     </members>

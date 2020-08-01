@@ -22,10 +22,11 @@ namespace backend.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Permite obtener productos paginados
+        /// Enviar parámetros para paginar, sin parámetros para obtener el listado completo
         /// </summary>
-        /// <param name="page"></param>
-        /// <param name="quantity"></param>
+        /// <param name="page">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+        /// <param name="quantity">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
         /// <returns></returns>
         // GET: api/Productos/Paginado/1&10
         [HttpGet()]
@@ -49,7 +50,11 @@ namespace backend.Controllers
             return producto;
         }
 
-        
+        /// <summary>
+        /// Permite obtener un producto encontrado por identificador de tipo integer
+        /// </summary>
+        /// <param name="id">Obligatorio, identificador para encontrar un producto, tipo entero</param>
+        /// <returns></returns>
         // GET: api/Producto/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Producto>> GetProducto(int id)
@@ -65,10 +70,10 @@ namespace backend.Controllers
         }
 
         /// <summary>
-        /// Actualización de productos.
+        /// Permite actualizar un producto por medio de su identificador
         /// </summary>
-        /// <param name="id">Requerido</param>
-        /// <param name="producto"></param>
+        /// <param name="id">Obligatorio, identificador de la categoría a modificar, tipo entero</param>
+        /// <param name="producto">Datos en formato Json</param>
         /// <returns></returns>
         // PUT: api/Producto/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -105,6 +110,11 @@ namespace backend.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Permite la inserción de un nuevo producto.
+        /// </summary>
+        /// <param name="producto">Datos en formato Json</param>
+        /// <returns></returns>
         // POST: api/Producto
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -121,6 +131,11 @@ namespace backend.Controllers
             return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
         }
 
+        /// <summary>
+        /// Permite la eliminación de una categoría mediante su identificador
+        /// </summary>
+        /// <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
+        /// <returns></returns>
         // DELETE: api/Producto/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Producto>> DeleteProducto(int id)
@@ -167,7 +182,7 @@ namespace backend.Controllers
                 //string nombreImagen = producto.Nombre.Replace(" ", "");
                 Guid nombreImagen = Guid.NewGuid();
                 string rutaImagen = filePath + "\\" + nombreImagen + ".png";
-                string imagenBase = prod.Imagen.Remove(0, 22);
+                string imagenBase = prod.Imagen;//.Remove(0, 22);
                 byte[] archivoBase64 = Convert.FromBase64String(imagenBase);
                 System.IO.File.WriteAllBytes(rutaImagen, archivoBase64);
 

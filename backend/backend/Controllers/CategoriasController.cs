@@ -21,11 +21,11 @@ namespace backend.Controllers
         }
 
         /// <summary>
-        /// Permite obtener productos paginados
+        /// Permite obtener categorias paginadas
         /// Enviar parámetros para paginar, sin parámetros para obtener el listado completo
         /// </summary>
-        /// <param name="page">No obligatorio, cantidad de elementos a saltar</param>
-        /// <param name="quantity">No obligatorio, cantidad de elementos a mostrar</param>
+        /// <param name="page">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+        /// <param name="quantity">No obligatorio, cantidad de elementos a mostrar, tipo entero</param>
         /// <returns></returns>
         // GET: api/Categorias?page=1&quantity=2
         [HttpGet()]
@@ -46,9 +46,9 @@ namespace backend.Controllers
         }
 
         /// <summary>
-        /// Permite obtener un producto encontrado por identificador de tipo integer
+        /// Permite obtener una categoría encontrado por identificador de tipo integer
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Obligatorio, identificador para encontrar una categoría, tipo entero</param>
         /// <returns></returns>
         // GET: api/Categorias/5
         [HttpGet("{id}")]
@@ -65,10 +65,10 @@ namespace backend.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Permite actualizar una categoria por medio de su identificador
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="categoria"></param>
+        /// <param name="id">Obligatorio, identificador de la categoría a modificar, tipo entero</param>
+        /// <param name="categoria">Datos en formato Json</param>
         /// <returns></returns>
         // PUT: api/Categorias/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -102,6 +102,11 @@ namespace backend.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Permite la inserción de una nueva categoría.
+        /// </summary>
+        /// <param name="categoria">Datos en formato Json</param>
+        /// <returns></returns>
         // POST: api/Categorias
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -114,6 +119,11 @@ namespace backend.Controllers
             return CreatedAtAction("GetCategoria", new { id = categoria.Id }, categoria);
         }
 
+        /// <summary>
+        /// Permite la eliminación de una categoría mediante su identificador
+        /// </summary>
+        /// <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
+        /// <returns></returns>
         // DELETE: api/Categorias/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Categoria>> DeleteCategoria(int id)
