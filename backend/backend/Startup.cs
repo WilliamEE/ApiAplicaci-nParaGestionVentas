@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics;
 using System.Threading.Tasks;
@@ -45,6 +46,10 @@ namespace backend
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo 
                 { Title="Aplicación de gestion de ventas", Version = "v1" });
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             }
             );
 
@@ -86,6 +91,8 @@ namespace backend
             {
                 endpoints.MapControllers();
             });
+
+           
         }
     }
 }

@@ -21,12 +21,33 @@ namespace backend.Controllers
             _context = context;
         }
 
-        // GET: api/Producto
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
-        //{
-        //    return await _context.Producto.ToListAsync();
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        // GET: api/Productos/Paginado/1&10
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<Producto>>> GetProductoPaginado([FromQuery(Name = "page")] int page, [FromQuery(Name = "quantity")] int quantity)
+        {
+            List<Producto> producto; //= await _context.PTask<ActionResult<IEnumerable<Producto>>>roducto.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
+
+            if (page != 0 && quantity != 0)
+            {
+                producto = await _context.Producto.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
+            }
+            else
+            {
+                producto = await _context.Producto.ToListAsync();
+            }
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            return producto;
+        }
 
         
         // GET: api/Producto/5
@@ -43,6 +64,12 @@ namespace backend.Controllers
             return producto;
         }
 
+        /// <summary>
+        /// Actualización de productos.
+        /// </summary>
+        /// <param name="id">Requerido</param>
+        /// <param name="producto"></param>
+        /// <returns></returns>
         // PUT: api/Producto/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -116,33 +143,7 @@ namespace backend.Controllers
             return _context.Producto.Any(e => e.Id == id);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="quantity"></param>
-        /// <returns></returns>
-        // GET: api/Productos/Paginado/1&10
-        [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Producto>>> GetProductoPaginado([FromQuery(Name = "page")] int page, [FromQuery(Name = "quantity")] int quantity)
-        {
-            List<Producto> producto; //= await _context.PTask<ActionResult<IEnumerable<Producto>>>roducto.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
-            
-            if (page != 0 && quantity != 0)
-            {
-                producto = await _context.Producto.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
-            }
-            else
-            {
-                producto = await _context.Producto.ToListAsync();
-            }
-            if (producto == null)
-            {
-                return NotFound();
-            }
-
-            return producto;
-        }
+        
 
         private string PostImage(Producto prod, int modo) {
             string filePath = Path.GetFullPath(@"Images");

@@ -13,6 +13,14 @@
             <param name="quantity">No obligatorio, cantidad de elementos a mostrar</param>
             <returns></returns>
         </member>
+        <member name="M:backend.Controllers.ProductosController.PutProducto(System.Int32,backend.Producto)">
+            <summary>
+            Actualización de productos.
+            </summary>
+            <param name="id">Requerido</param>
+            <param name="producto"></param>
+            <returns></returns>
+        </member>
         <member name="M:backend.Controllers.ProductosController.GetProductoPaginado(System.Int32,System.Int32)">
             <summary>
             

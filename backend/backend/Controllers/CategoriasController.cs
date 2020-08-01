@@ -20,14 +20,36 @@ namespace backend.Controllers
             _context = context;
         }
 
-        
-        // GET: api/Categorias
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoria()
-        //{
-        //    return await _context.Categoria.ToListAsync();
-        //}
+        /// <summary>
+        /// Permite obtener productos paginados
+        /// Enviar parámetros para paginar, sin parámetros para obtener el listado completo
+        /// </summary>
+        /// <param name="page">No obligatorio, cantidad de elementos a saltar</param>
+        /// <param name="quantity">No obligatorio, cantidad de elementos a mostrar</param>
+        /// <returns></returns>
+        // GET: api/Categorias?page=1&quantity=2
+        [HttpGet()]
+        public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriaPaginado([FromQuery(Name = "page")] int page, [FromQuery(Name = "quantity")] int quantity)
+        {
+            List<Categoria> categoria; //= await _context.Categoria.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
 
+            if (page != 0 && quantity != 0)
+            {
+                categoria = await _context.Categoria.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
+            }
+            else
+            {
+                categoria = await _context.Categoria.ToListAsync();
+            }
+
+            return categoria;
+        }
+
+        /// <summary>
+        /// Permite obtener un producto encontrado por identificador de tipo integer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET: api/Categorias/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Categoria>> GetCategoria(int id)
@@ -42,6 +64,12 @@ namespace backend.Controllers
             return categoria;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         // PUT: api/Categorias/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -107,29 +135,7 @@ namespace backend.Controllers
             return _context.Categoria.Any(e => e.Id == id);
         }
 
-        /// <summary>
-        /// GET para obtener productos paginadas
-        /// Enviar parámetros para paginar, sin parámetros para obtener el listado completo
-        /// </summary>
-        /// <param name="page">No obligatorio, cantidad de elementos a saltar</param>
-        /// <param name="quantity">No obligatorio, cantidad de elementos a mostrar</param>
-        /// <returns></returns>
-        // GET: api/Categorias?page=1&quantity=2
-        [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriaPaginado([FromQuery(Name = "page")] int page, [FromQuery(Name = "quantity")] int quantity)
-        {
-            List<Categoria> categoria; //= await _context.Categoria.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
-
-            if (page != 0 && quantity != 0)
-            {
-                categoria = await _context.Categoria.Skip((page - 1) * quantity).Take(quantity).ToListAsync();
-            }
-            else {
-                categoria = await _context.Categoria.ToListAsync();
-            }
-
-            return categoria;
-        }
+        
     }
 
 }
