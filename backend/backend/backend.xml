@@ -42,6 +42,44 @@
             <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
             <returns></returns>
         </member>
+        <member name="M:backend.Controllers.ClientesController.GetClientePaginado(System.Int32,System.Int32)">
+            <summary>
+            Permite obtener clientes paginados
+            Enviar parámetros para paginar, sin parámetros para obtener el listado completo
+            </summary>
+            <param name="page">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+            <param name="quantity">No obligatorio, cantidad de elementos a saltar, tipo entero</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ClientesController.GetCliente(System.Int32)">
+            <summary>
+            Permite obtener un cliente encontrado por identificador de tipo integer
+            </summary>
+            <param name="id">Obligatorio, identificador para encontrar un cliente, tipo entero</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ClientesController.PutCliente(System.Int32,backend.Models.Cliente)">
+            <summary>
+            Permite actualizar un cliente por medio de su identificador
+            </summary>
+            <param name="id">Obligatorio, identificador del cliente a modificar, tipo entero</param>
+            <param name="cliente">Datos en formato Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ClientesController.PostCliente(backend.Models.Cliente)">
+            <summary>
+            Permite la inserción de un nuevo cliente.
+            </summary>
+            <param name="cliente">Datos en formato Json</param>
+            <returns></returns>
+        </member>
+        <member name="M:backend.Controllers.ClientesController.DeleteCliente(System.Int32)">
+            <summary>
+            Permite la eliminación de un cliente mediante su identificador
+            </summary>
+            <param name="id">Obligatorio, identificador de cliente a elminar, tipo entero</param>
+            <returns></returns>
+        </member>
         <member name="M:backend.Controllers.ProductosController.GetProductoPaginado(System.Int32,System.Int32)">
             <summary>
             Permite obtener productos paginados
@@ -62,7 +100,7 @@
             <summary>
             Permite actualizar un producto por medio de su identificador
             </summary>
-            <param name="id">Obligatorio, identificador de la categoría a modificar, tipo entero</param>
+            <param name="id">Obligatorio, identificador del producto a modificar, tipo entero</param>
             <param name="producto">Datos en formato Json</param>
             <returns></returns>
         </member>
@@ -75,9 +113,9 @@
         </member>
         <member name="M:backend.Controllers.ProductosController.DeleteProducto(System.Int32)">
             <summary>
-            Permite la eliminación de una categoría mediante su identificador
+            Permite la eliminación de un producto mediante su identificador
             </summary>
-            <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
+            <param name="id">Obligatorio, identificador de producto a elminar, tipo entero</param>
             <returns></returns>
         </member>
     </members>

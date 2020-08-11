@@ -72,7 +72,7 @@ namespace backend.Controllers
         /// <summary>
         /// Permite actualizar un producto por medio de su identificador
         /// </summary>
-        /// <param name="id">Obligatorio, identificador de la categoría a modificar, tipo entero</param>
+        /// <param name="id">Obligatorio, identificador del producto a modificar, tipo entero</param>
         /// <param name="producto">Datos en formato Json</param>
         /// <returns></returns>
         // PUT: api/Producto/5
@@ -132,9 +132,9 @@ namespace backend.Controllers
         }
 
         /// <summary>
-        /// Permite la eliminación de una categoría mediante su identificador
+        /// Permite la eliminación de un producto mediante su identificador
         /// </summary>
-        /// <param name="id">Obligatorio, identificador de categoría a elminar, tipo entero</param>
+        /// <param name="id">Obligatorio, identificador de producto a elminar, tipo entero</param>
         /// <returns></returns>
         // DELETE: api/Producto/5
         [HttpDelete("{id}")]
